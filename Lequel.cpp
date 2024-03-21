@@ -27,13 +27,25 @@ TrigramProfile buildTrigramProfile(const Text &text)
     wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
     // Your code goes here...
+    //le saco el enter a todas las lineas
+    for (auto line : text) 
+    {
+        if ((line.length() > 0) && (line[line.length() - 1] == '\r'))
+        {
+            line = line.substr(0, line.length() - 1); 
+        }
+            
+    }
+    TrigramProfile mapa; 
+
+    //por cada linea de texto tomo todos los trigramas
     for (auto line : text)
     {
-        if ((line.length() > 0) &&
-            (line[line.length() - 1] == '\r'))
-            line = line.substr(0, line.length() - 1);
+        for (int i = 0; i < line.length() - 2; i++)
+        {
+            mapa[line.substr(i, 3)] += 1;
+        }
     }
-
     // Tip: converts UTF-8 string to wstring
     // wstring unicodeString = converter.from_bytes(textLine);
 
