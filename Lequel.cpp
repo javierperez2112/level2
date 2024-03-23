@@ -63,17 +63,17 @@ TrigramProfile buildTrigramProfile(const Text &text)
 void normalizeTrigramProfile(TrigramProfile &trigramProfile)
 {
     /* Calculate sqrt(sum of freq^2) */
-    TrigramProfile::iterator iter = trigramProfile.begin();
+    TrigramProfile::iterator iter;
     float norm = 0;
-    for(; iter != trigramProfile.end(); iter++){
-        float frequency = iter->second;
-        norm += frequency * frequency;
+    for(iter = trigramProfile.begin(); iter != trigramProfile.end(); iter++)
+    {
+        float frequency = iter->second * iter->second;
+        norm += frequency;
     }
     norm = fsqrt(norm);
 
     /* Normalize frequencies */
-    iter = trigramProfile.begin();
-    for(; iter != trigramProfile.end(); iter++)
+    for(iter = trigramProfile.begin(); iter != trigramProfile.end(); iter++)
     {
         iter->second = iter->second / norm;
     }
@@ -90,9 +90,18 @@ void normalizeTrigramProfile(TrigramProfile &trigramProfile)
  */
 float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageProfile)
 {
-    // Your code goes here...
+    TrigramProfile::iterator iter;
+    float cosineSimilarity = 0;
+    for(iter = textProfile.begin(); iter != textProfile.end(); iter++)
+    {
+        float languageFrequency = languageProfile[iter->first];
+        if(languageFrequency != 0)
+        {
+            cosineSimilarity += languageFrequency * iter->second;
+        } 
+    }
 
-    return 0; // Fill-in result here
+    return cosineSimilarity;
 }
 
 /**
@@ -104,7 +113,20 @@ float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageP
  */
 string identifyLanguage(const Text &text, LanguageProfiles &languages)
 {
-    // Your code goes here...
+    TrigramProfile textProfile = buildTrigramProfile(text);
+    normalizeTrigramProfile(textProfile);
+    float greatestSimilarity = 0;
+    string languageCode = "";
 
-    return ""; // Fill-in result here
+    for(auto &language : languages)
+    {
+        float cosineSimilarity = getCosineSimilarity(textProfile, language.trigramProfile);
+        if(cosineSimilarity > greatestSimilarity)
+        {
+            greatestSimilarity = cosineSimilarity;
+            languageCode = language.languageCode;
+        }
+    }
+
+    return languageCode;
 }
