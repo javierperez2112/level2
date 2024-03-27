@@ -85,7 +85,7 @@ WE HAD EVERYTHING BEFORE US, WE HAD NOTHING BEFORE US,
 WE WERE ALL GOING DIRECT TO HEAVEN, WE WERE ALL GOING DIRECT THE OTHER WAY
 – IN SHORT, THE PERIOD WAS SO FAR LIKE THE PRESENT PERIOD, THAT SOME OF ITS NOISIEST AUTHORITIES INSISTED ON ITS BEING RECEIVED, FOR GOOD OR FOR EVIL, IN THE SUPERLATIVE DEGREE OF COMPARISON ONLY.
 
-
+> El reconocimiento de idioma falla y devuelve "Afrikaans". Esto sucede porque, al estar en mayúsculas, los trigramas que se registran no coinciden con casi ningunos datos, porque estos están principalmente en minúsculas, excepto por las mayúsculas iniciales y en nombres propios. Si se provee el mismo texto pero todo en minúsculas o con capitalización estándar, Lequel lo reconoce correctamente.
 
 ## Bonus points
 
