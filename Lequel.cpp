@@ -38,6 +38,8 @@ TrigramProfile buildTrigramProfile(const Text &text)
     /* Count frequencies */
     TrigramProfile trigramProfile;
     for (auto textLine : text){
+        if(textLine.length() < 3)
+            continue;
         wstring unicodeString = converter.from_bytes(textLine);
         for(int i = 0; i < unicodeString.length() - 3; i++)
         {
