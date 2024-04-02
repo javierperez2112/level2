@@ -26,24 +26,26 @@ TrigramProfile buildTrigramProfile(const Text &text)
 {
     wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
-    // Your code goes here...
-    //le saco el enter a todas las lineas
-    for (auto line : text) 
+    /* Delete end of line */
+    for (auto line : text)
     {
         if ((line.length() > 0) && (line[line.length() - 1] == '\r'))
         {
-            line = line.substr(0, line.length() - 1); 
+            line = line.substr(0, line.length() - 1);
         }
-            
     }
-    TrigramProfile mapa; 
 
-    //por cada linea de texto tomo todos los trigramas
-    for (auto line : text)
-    {
-        for (int i = 0; i < line.length() - 2; i++)
+    /* Count frequencies */
+    TrigramProfile trigramProfile;
+    for (auto textLine : text){
+        if(textLine.length() < 3)
+            continue;
+        wstring unicodeString = converter.from_bytes(textLine);
+        for(int i = 0; i < unicodeString.length() - 3; i++)
         {
-            mapa[line.substr(i, 3)] += 1;
+            wstring unicodeTrigram = unicodeString.substr(i, 3);
+            string trigram = converter.to_bytes(unicodeTrigram);
+            trigramProfile[trigram] = trigramProfile[trigram] + 1;
         }
     }
     // Tip: converts UTF-8 string to wstring
@@ -52,7 +54,7 @@ TrigramProfile buildTrigramProfile(const Text &text)
     // Tip: convert wstring to UTF-8 string
     // string trigram = converter.to_bytes(unicodeTrigram);
 
-    return TrigramProfile(); // Fill-in result here
+    return trigramProfile; // Fill-in result here
 }
 
 /**
@@ -62,7 +64,21 @@ TrigramProfile buildTrigramProfile(const Text &text)
  */
 void normalizeTrigramProfile(TrigramProfile &trigramProfile)
 {
-    // Your code goes here...
+    /* Calculate sqrt(sum of freq^2) */
+    TrigramProfile::iterator iter;
+    float norm = 0;
+    for(iter = trigramProfile.begin(); iter != trigramProfile.end(); iter++)
+    {
+        float frequency = iter->second * iter->second;
+        norm += frequency;
+    }
+    norm = fsqrt(norm);
+
+    /* Normalize frequencies */
+    for(iter = trigramProfile.begin(); iter != trigramProfile.end(); iter++)
+    {
+        iter->second = iter->second / norm;
+    }
 
     return;
 }
@@ -76,9 +92,18 @@ void normalizeTrigramProfile(TrigramProfile &trigramProfile)
  */
 float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageProfile)
 {
-    // Your code goes here...
+    TrigramProfile::iterator iter;
+    float cosineSimilarity = 0;
+    for(iter = textProfile.begin(); iter != textProfile.end(); iter++)
+    {
+        float languageFrequency = languageProfile[iter->first];
+        if(languageFrequency != 0)
+        {
+            cosineSimilarity += languageFrequency * iter->second;
+        } 
+    }
 
-    return 0; // Fill-in result here
+    return cosineSimilarity;
 }
 
 /**
@@ -90,7 +115,20 @@ float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageP
  */
 string identifyLanguage(const Text &text, LanguageProfiles &languages)
 {
-    // Your code goes here...
+    TrigramProfile textProfile = buildTrigramProfile(text);
+    normalizeTrigramProfile(textProfile);
+    float greatestSimilarity = 0;
+    string languageCode = "";
 
-    return ""; // Fill-in result here
+    for(auto &language : languages)
+    {
+        float cosineSimilarity = getCosineSimilarity(textProfile, language.trigramProfile);
+        if(cosineSimilarity > greatestSimilarity)
+        {
+            greatestSimilarity = cosineSimilarity;
+            languageCode = language.languageCode;
+        }
+    }
+
+    return languageCode;
 }
