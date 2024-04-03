@@ -13,8 +13,11 @@
 #include <iostream>
 
 #include "Lequel.h"
+#include "CSVData.h"
 
 using namespace std;
+
+const string NEW_LANGUAGE = "resources/trigrams/cat.csv";
 
 /**
  * @brief Builds a trigram profile from a given text.
@@ -71,8 +74,8 @@ void normalizeTrigramProfile(TrigramProfile &trigramProfile)
     {
         float frequency = iter->second * iter->second;
         norm += frequency;
-    }
-    norm = fsqrt(norm);
+    } 
+    norm = sqrtf(norm);
 
     /* Normalize frequencies */
     for(iter = trigramProfile.begin(); iter != trigramProfile.end(); iter++)
@@ -131,4 +134,28 @@ string identifyLanguage(const Text &text, LanguageProfiles &languages)
     }
 
     return languageCode;
+}
+
+/**
+ * @brief builds the trigramprofile and adds it to trigrams.csv
+ *
+ * @param text A Text (vector of lines)
+ * @param 
+ */
+void buildLanguageProfile(const Text& text)
+{
+    TrigramProfile newLanguage = buildTrigramProfile(text);
+
+    CSVData data; /*typedef std::vector<std::vector<std::string>> CSVData;*/
+
+    int i;
+    TrigramProfile::iterator iter;
+
+    for(iter = newLanguage.begin() , i = 0; iter != newLanguage.end(); iter++, i++)
+    {
+        data[i][0]= iter->first;
+        data[i][1]= iter->second; //me da un float quiero un string, funcionara?
+    } 
+
+    writeCSV("NEW_LANGUAGE", data);
 }

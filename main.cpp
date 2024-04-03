@@ -14,6 +14,8 @@
 #include "CSVData.h"
 #include "Lequel.h"
 
+#define NEW
+
 using namespace std;
 
 const string LANGUAGECODE_NAMES_FILE = "resources/languagecode_names_es.csv";
@@ -120,7 +122,11 @@ int main(int, char *[])
                 Text text;
                 getTextFromFile(droppedFiles.paths[0], text);
 
+                #ifdef NEW
+                buildLanguageProfile(text);
+                #else
                 languageCode = identifyLanguage(text, languages);
+                #endif
 
                 UnloadDroppedFiles(droppedFiles);
             }

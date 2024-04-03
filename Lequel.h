@@ -16,6 +16,7 @@
 
 #include "Text.h"
 
+
 // TrigramProfile: map of trigram -> frequency
 typedef std::map<std::string, float> TrigramProfile;
 
@@ -35,5 +36,9 @@ TrigramProfile buildTrigramProfile(const Text &text);
 void normalizeTrigramProfile(TrigramProfile &trigramProfile);
 float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageProfile);
 std::string identifyLanguage(const Text &text, LanguageProfiles &languages);
+
+void buildLanguageProfile(const Text &text);
+
+
 
 #endif
