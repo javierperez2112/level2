@@ -159,5 +159,5 @@ void buildLanguageProfile(const Text& text)
         data.push_back(dataPair);
     } 
 
-    writeCSV("/NEW_LANGUAGE", data);
+    writeCSV("NEW_LANGUAGE", data);
 }
