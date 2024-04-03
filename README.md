@@ -72,7 +72,7 @@ Al Seicento appartiene il primo trattato dedicato non ai volgari italiani o a un
 
 And there's a hand, my trusty fiere! and gie's a hand o' thine! And we’ll tak' a right gude-willie waught, for auld lang syne.
 
-
+> En este caso, el programa devuelv "Inglés". Al ser un texto muy corto, se confunde con el inglés porque sus perfiles son bastante similares. De haber sido un texto más largo, habría sido reconocido correctamente.
 
 12. El siguiente texto está en inglés. ¿Qué dice Lequel? ¿Qué falla? Justifica por qué ocurre lo que ocurre.
 
@@ -89,4 +89,13 @@ WE WERE ALL GOING DIRECT TO HEAVEN, WE WERE ALL GOING DIRECT THE OTHER WAY
 
 ## Bonus points
 
-[completar]
+### Ampliando sobre la similitud coseno: 
+> Esta herramienta matemática relativamente fácil de comprender resulta de mucha utilidad para cuantificar la similitud entre dos o más
+objetos. Ésta se puede aplicar en cualquier circunstancia donde se pueda obtener una forma vectorizada de representación de los objetos. Ejemplos interesantes de su 
+aplicación son la identificación de similitud de documentos, útil para la detección de plagio, la minería de datos, y los sistemas de recomendación, y la identificación
+de coincidencia de poses utilizado en procesos como la estimación de poses del cuerpo humano (tarea de visión artificial).
+[https://builtin.com/machine-learning/cosine-similarity].
+
+
+### Agregar idioma
+> Para crear un nuevo archivo .csv, escribir `#define NEW` en `main.cpp` o en el compilador. Se escribirá en el archivo `resources/trigrams/cat.csv`. Esto se puede cambiar en la línea `#define NEW_LANGUAGE "resources/trigrams/cat.csv"` en `Lequel.h`. Se debe cargar un archivo de texto (preferiblemente mayor a 1MB) para crear los datos de un idioma, no funcionará si se pega un texto.
