@@ -14,8 +14,6 @@
 #include "CSVData.h"
 #include "Lequel.h"
 
-#define NEW
-
 using namespace std;
 
 const string LANGUAGECODE_NAMES_FILE = "resources/languagecode_names_es.csv";
@@ -124,6 +122,7 @@ int main(int, char *[])
 
                 #ifdef NEW
                 buildLanguageProfile(text);
+                cout << "New language created on " << NEW_LANGUAGE << endl;
                 #else
                 languageCode = identifyLanguage(text, languages);
                 #endif

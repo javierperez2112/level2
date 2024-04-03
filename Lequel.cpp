@@ -17,8 +17,6 @@
 
 using namespace std;
 
-const string NEW_LANGUAGE = "resources/trigrams/cat.csv";
-
 /**
  * @brief Builds a trigram profile from a given text.
  *
@@ -51,11 +49,6 @@ TrigramProfile buildTrigramProfile(const Text &text)
             trigramProfile[trigram] = trigramProfile[trigram] + 1;
         }
     }
-    // Tip: converts UTF-8 string to wstring
-    // wstring unicodeString = converter.from_bytes(textLine);
-
-    // Tip: convert wstring to UTF-8 string
-    // string trigram = converter.to_bytes(unicodeTrigram);
 
     return trigramProfile; // Fill-in result here
 }
@@ -140,7 +133,6 @@ string identifyLanguage(const Text &text, LanguageProfiles &languages)
  * @brief builds the trigramprofile and adds it to trigrams.csv
  *
  * @param text A Text (vector of lines)
- * @param 
  */
 void buildLanguageProfile(const Text& text)
 {
@@ -148,16 +140,15 @@ void buildLanguageProfile(const Text& text)
 
     CSVData data; /*typedef std::vector<std::vector<std::string>> CSVData;*/
 
-    int i;
     TrigramProfile::iterator iter;
 
-    for(iter = newLanguage.begin() , i = 0; iter != newLanguage.end(); iter++, i++)
+    for(iter = newLanguage.begin(); iter != newLanguage.end(); iter++)
     {
-        std::vector<string> dataPair;
+        vector<string> dataPair;
         dataPair.push_back(iter->first);
         dataPair.push_back(to_string(iter->second));
         data.push_back(dataPair);
     } 
 
-    writeCSV("NEW_LANGUAGE", data);
+    writeCSV(NEW_LANGUAGE, data);
 }

@@ -16,6 +16,7 @@
 
 #include "Text.h"
 
+#define NEW_LANGUAGE "resources/trigrams/cat.csv"
 
 // TrigramProfile: map of trigram -> frequency
 typedef std::map<std::string, float> TrigramProfile;
