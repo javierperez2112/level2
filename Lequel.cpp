@@ -153,9 +153,11 @@ void buildLanguageProfile(const Text& text)
 
     for(iter = newLanguage.begin() , i = 0; iter != newLanguage.end(); iter++, i++)
     {
-        data[i][0]= iter->first;
-        data[i][1]= iter->second; //me da un float quiero un string, funcionara?
+        std::vector<string> dataPair;
+        dataPair.push_back(iter->first);
+        dataPair.push_back(to_string(iter->second));
+        data.push_back(dataPair);
     } 
 
-    writeCSV("NEW_LANGUAGE", data);
+    writeCSV("/NEW_LANGUAGE", data);
 }
