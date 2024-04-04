@@ -99,3 +99,6 @@ de coincidencia de poses utilizado en procesos como la estimación de poses del 
 
 ### Agregar idioma:
 > Para crear un nuevo archivo .csv, se debe añadir la línea `#define NEW` en `main.cpp`. Se escribirá en el archivo `resources/trigrams/cat.csv`. Esto se puede cambiar en la línea `#define NEW_LANGUAGE "resources/trigrams/cat.csv"` en `Lequel.h`. Se debe cargar un archivo de texto (preferiblemente mayor a 1MB) para crear los datos de un idioma, no funcionará si se pega directamente con `Ctrl+V`.
+
+### Mejora de la complejidad computacional:
+> El cuello de botella se produce en la conversión del texto en perfil de trigramas y al comparar este perfil con los idiomas. Esto se podría resolver un límite en la cantidad de caracteres que se toman para formar los trigramas. Empíricamente, se vio que con 500 caracteres analizados se obtiene un reconocimiento preciso, así que un límite de unos 1000 caracteres daría un buen margen de precisión. De esta forma, a partir de 1000 caracteres, el algoritmo funcionaría en **O(1)** en lugar de **O(n)**.
