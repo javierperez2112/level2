@@ -6,8 +6,6 @@
 * Javier Baltasar Pérez Losada:
 * Santiago Andrés Riverós:
 
-[completar]
-
 ## Respuestas del enunciado
 
 1. ¿En qué idioma está el siguiente texto?
@@ -96,8 +94,8 @@ WE WERE ALL GOING DIRECT TO HEAVEN, WE WERE ALL GOING DIRECT THE OTHER WAY
 objetos. Ésta se puede aplicar en cualquier circunstancia donde se pueda obtener una forma vectorizada de representación de los objetos. Ejemplos interesantes de su 
 aplicación son la identificación de similitud de documentos, útil para la detección de plagio, la minería de datos, y los sistemas de recomendación, y la identificación
 de coincidencia de poses utilizado en procesos como la estimación de poses del cuerpo humano (tarea de visión artificial).
-[https://builtin.com/machine-learning/cosine-similarity].
 
+<https://builtin.com/machine-learning/cosine-similarity>
 
-### Agregar idioma
-> Para crear un nuevo archivo .csv, escribir `#define NEW` en `main.cpp` o en el compilador. Se escribirá en el archivo `resources/trigrams/cat.csv`. Esto se puede cambiar en la línea `#define NEW_LANGUAGE "resources/trigrams/cat.csv"` en `Lequel.h`. Se debe cargar un archivo de texto (preferiblemente mayor a 1MB) para crear los datos de un idioma, no funcionará si se pega un texto.
+### Agregar idioma:
+> Para crear un nuevo archivo .csv, se debe añadir la línea `#define NEW` en `main.cpp`. Se escribirá en el archivo `resources/trigrams/cat.csv`. Esto se puede cambiar en la línea `#define NEW_LANGUAGE "resources/trigrams/cat.csv"` en `Lequel.h`. Se debe cargar un archivo de texto (preferiblemente mayor a 1MB) para crear los datos de un idioma, no funcionará si se pega directamente con `Ctrl+V`.
