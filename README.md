@@ -2,7 +2,9 @@
 
 ## Integrantes del grupo y contribución al trabajo de cada integrante
 
-* [Nombre]: [contribución]
+* Facundo Julián Torres:
+* Javier Baltasar Pérez Losada:
+* Santiago Andrés Riverós:
 
 [completar]
 
@@ -72,7 +74,7 @@ Al Seicento appartiene il primo trattato dedicato non ai volgari italiani o a un
 
 And there's a hand, my trusty fiere! and gie's a hand o' thine! And we’ll tak' a right gude-willie waught, for auld lang syne.
 
-> En este caso, el programa devuelv "Inglés". Al ser un texto muy corto, se confunde con el inglés porque sus perfiles son bastante similares. De haber sido un texto más largo, habría sido reconocido correctamente.
+> En este caso, el programa devuelve "Inglés". Al ser un texto muy corto, se confunde con el inglés porque sus perfiles son bastante similares. De haber sido un texto más largo, habría sido reconocido correctamente.
 
 12. El siguiente texto está en inglés. ¿Qué dice Lequel? ¿Qué falla? Justifica por qué ocurre lo que ocurre.
 
