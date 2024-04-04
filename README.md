@@ -2,9 +2,9 @@
 
 ## Integrantes del grupo y contribución al trabajo de cada integrante
 
-* Facundo Julián Torres:
-* Javier Baltasar Pérez Losada:
-* Santiago Andrés Riverós:
+* Facundo Julián Torres: implementación del bonus para la carga de idiomas nuevos.
+* Javier Baltasar Pérez Losada: implementación de las funciones de Lequel.cpp para la detección de idioma.
+* Santiago Andrés Riverós: implementación del bonus para la carga de idiomas nuevos.
 
 ## Respuestas del enunciado
 
